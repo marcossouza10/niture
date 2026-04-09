@@ -116,7 +116,12 @@ resource "oci_core_instance" "webserver1" {
   availability_domain = data.oci_identity_availability_domain.ad.name
   compartment_id      = var.compartment_ocid
   display_name        = "webserver1"
-  shape               = "VM.Standard.A1.Flex"
+  shape               = "VM.Standard.E2.1.Micro"
+
+  shape_config {
+    ocpus         = 1
+    memory_in_gbs = 1
+  }
 
   create_vnic_details {
     subnet_id        = oci_core_subnet.tcb_subnet.id
@@ -130,6 +135,10 @@ resource "oci_core_instance" "webserver1" {
     source_id   = var.images[var.region]
   }
 
+  metadata = {
+    ssh_authorized_keys = var.ssh_public_key
+  }
+}
   metadata = {
     ssh_authorized_keys = var.ssh_public_key
   }
