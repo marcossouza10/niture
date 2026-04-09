@@ -139,7 +139,3 @@ resource "oci_core_instance" "webserver1" {
     ssh_authorized_keys = var.ssh_public_key
   }
 }
-  metadata = {
-    ssh_authorized_keys = var.ssh_public_key
-  }
-}
