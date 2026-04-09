@@ -116,7 +116,7 @@ resource "oci_core_instance" "webserver1" {
   availability_domain = data.oci_identity_availability_domain.ad.name
   compartment_id      = var.compartment_ocid
   display_name        = "webserver1"
-  shape               = "VM.Standard.E2.1.Micro"
+  shape               = "VM.Standard.A1.Flex"
 
   create_vnic_details {
     subnet_id        = oci_core_subnet.tcb_subnet.id
